@@ -1,5 +1,5 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { FirebaseApp, getApps, initializeApp } from "firebase/app";
+import { Analytics, getAnalytics } from "firebase/analytics";
 import { GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
@@ -12,8 +12,14 @@ const firebaseConfig = {
     measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
 };
 
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const googleAuthProvider = new GoogleAuthProvider();
+let app: FirebaseApp;
+let analytics: Analytics;
+let googleAuthProvider: GoogleAuthProvider;
+
+if (typeof window !== "undefined" && !getApps().length) {
+    app = initializeApp(firebaseConfig);
+    analytics = getAnalytics(app);
+    googleAuthProvider = new GoogleAuthProvider();
+}
 
 export { app, analytics, googleAuthProvider };

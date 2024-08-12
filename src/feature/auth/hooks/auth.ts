@@ -15,6 +15,8 @@ const useAuth = () => {
             icon: photoURL ?? ""
         }
 
+        console.log(user);
+
         setAuthUser(auth);
     };
 

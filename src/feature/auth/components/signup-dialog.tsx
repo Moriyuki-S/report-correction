@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { Dispatch, SetStateAction } from "react";
+import useAuth from "../hooks/auth";
 
 type SignUpDialogProps = {
     isOpenDialog: boolean;
@@ -12,10 +13,16 @@ type SignUpDialogProps = {
 
 const SignUpDialog = (props: SignUpDialogProps) => {
     const { isOpenDialog, setIsOpenDialog, setIsOpenSignInDialog } = props;
+    const { authUser, signIn } = useAuth();
 
     const shiftToSignInDialog = () => {
         setIsOpenDialog(false);
         setIsOpenSignInDialog(true);
+    };
+
+    const handleSignUp = () => {
+        signIn();
+        setIsOpenDialog(false);
     };
 
     return (
@@ -31,7 +38,7 @@ const SignUpDialog = (props: SignUpDialogProps) => {
                     ログインは<button className={cn("text-blue-500 underline", "hover:text-blue-700")} onClick={shiftToSignInDialog}>こちらから</button>
                 </DialogDescription>
                 <div className={cn("w-fit", "mx-auto", "mt-5")}>
-                    <Button>
+                    <Button onClick={handleSignUp}>
                         Googleで登録
                     </Button>
                 </div>
