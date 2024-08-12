@@ -3,8 +3,8 @@
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { useState } from "react";
-import SignInDialog from "../feature/auth/components/signin-dialog";
-import SignUpDialog from "../feature/auth/components/signup-dialog";
+import SignInDialog from "../../feature/auth/components/signin-dialog";
+import SignUpDialog from "../../feature/auth/components/signup-dialog";
 
 const Header = () => {
 
