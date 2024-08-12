@@ -13,9 +13,7 @@ const useAuth = () => {
             id: uid,
             name: displayName ?? "",
             icon: photoURL ?? ""
-        }
-
-        console.log(user);
+        };
 
         setAuthUser(auth);
     };
