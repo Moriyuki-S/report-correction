@@ -1,6 +1,6 @@
 import { atom } from "jotai";
 import { AuthUser } from "../types/user";
 
-const authUser = atom<AuthUser | null>(null);
+const authUserStore = atom<AuthUser | null>(null);
 
-export { authUser };
+export { authUserStore };
