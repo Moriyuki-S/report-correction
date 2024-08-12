@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { Provider } from "jotai";
 
 type ProvidersProps = {
     children: React.ReactNode;
@@ -8,8 +9,8 @@ type ProvidersProps = {
 
 export const Providers = ({ children }: ProvidersProps) => {
     return (
-        <Providers>
+        <Provider>
             {children}
-        </Providers>
+        </Provider>
     );
 };
