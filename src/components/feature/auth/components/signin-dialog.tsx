@@ -6,14 +6,16 @@ import Link from "next/link";
 
 type SignInDialogProps = {
     isOpenDialog: boolean;
-    setIsOpenDialog: Dispatch<SetStateAction<boolean>>
+    setIsOpenDialog: Dispatch<SetStateAction<boolean>>;
+    setIsOpenSignUpDialog: Dispatch<SetStateAction<boolean>>;
 };
 
 const SignInDialog = (props: SignInDialogProps) => {
-    const { isOpenDialog, setIsOpenDialog } = props;
+    const { isOpenDialog, setIsOpenDialog, setIsOpenSignUpDialog } = props;
 
-    const shiftSignUpDialog = () => {
+    const shiftToSignUpDialog = () => {
         setIsOpenDialog(false);
+        setIsOpenSignUpDialog(true);
     };
 
     return (
@@ -23,7 +25,10 @@ const SignInDialog = (props: SignInDialogProps) => {
                     ログイン
                 </DialogTitle>
                 <DialogDescription>
-                    Googleでログインしてください。新規登録は<button onClick={shiftSignUpDialog}>こちらから</button>
+                    Googleでログインしてください。
+                </DialogDescription>
+                <DialogDescription>
+                    新規登録は<button className={cn("text-blue-500 underline", "hover:text-blue-700")} onClick={shiftToSignUpDialog}>こちらから</button>
                 </DialogDescription>
                 <div className={cn("w-fit", "mx-auto", "mt-5")}>
                     <Button>

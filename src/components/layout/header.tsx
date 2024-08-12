@@ -4,14 +4,19 @@ import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { useState } from "react";
 import SignInDialog from "../feature/auth/components/signin-dialog";
+import SignUpDialog from "../feature/auth/components/signup-dialog";
 
 const Header = () => {
 
     const [isOpenSignInDialog, setIsOpenSignInDialog] = useState<boolean>(false);
-
+    const [isOpenSignUpDialog, setIsOpenSignUpDialog] = useState<boolean>(false);
 
     const openSignInDialog = () => {
         setIsOpenSignInDialog(true);
+    };
+
+    const openSignUpDialog = () => {
+        setIsOpenSignUpDialog(true);
     };
 
 
@@ -25,11 +30,19 @@ const Header = () => {
                 >
                     <span>📄</span>面白レポート添削
                 </h1>
-                <Button onClick={openSignInDialog} className="h-10">
-                    ログイン
-                </Button>
+                <menu className="md:flex md:gap-x-5">
+                    <li className="hidden md:block">
+                        <Button variant={"outline"} onClick={openSignUpDialog} className="h-10">新規登録</Button>
+                    </li>
+                    <li>
+                        <Button onClick={openSignInDialog} className="h-10">
+                            ログイン
+                        </Button>
+                    </li>
+                </menu>
             </header>
-            <SignInDialog isOpenDialog={isOpenSignInDialog} setIsOpenDialog={setIsOpenSignInDialog} />
+            <SignInDialog isOpenDialog={isOpenSignInDialog} setIsOpenDialog={setIsOpenSignInDialog} setIsOpenSignUpDialog={setIsOpenSignUpDialog} />
+            <SignUpDialog isOpenDialog={isOpenSignUpDialog} setIsOpenDialog={setIsOpenSignUpDialog} setIsOpenSignInDialog={setIsOpenSignInDialog} />
         </>
     )
 };

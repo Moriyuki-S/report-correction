@@ -1,0 +1,43 @@
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
+import { Dispatch, SetStateAction } from "react";
+
+type SignUpDialogProps = {
+    isOpenDialog: boolean;
+    setIsOpenDialog: Dispatch<SetStateAction<boolean>>;
+    setIsOpenSignInDialog: Dispatch<SetStateAction<boolean>>;
+};
+
+
+const SignUpDialog = (props: SignUpDialogProps) => {
+    const { isOpenDialog, setIsOpenDialog, setIsOpenSignInDialog } = props;
+
+    const shiftToSignInDialog = () => {
+        setIsOpenDialog(false);
+        setIsOpenSignInDialog(true);
+    };
+
+    return (
+        <Dialog open={isOpenDialog} onOpenChange={setIsOpenDialog}>
+            <DialogContent className="w-72">
+                <DialogTitle>
+                    新規登録
+                </DialogTitle>
+                <DialogDescription>
+                    Googleで登録してください。
+                </DialogDescription>
+                <DialogDescription>
+                    ログインは<button className={cn("text-blue-500 underline", "hover:text-blue-700")} onClick={shiftToSignInDialog}>こちらから</button>
+                </DialogDescription>
+                <div className={cn("w-fit", "mx-auto", "mt-5")}>
+                    <Button>
+                        Googleで登録
+                    </Button>
+                </div>
+            </DialogContent>
+        </Dialog>
+    )
+};
+
+export default SignUpDialog;
