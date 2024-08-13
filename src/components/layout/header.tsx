@@ -6,6 +6,7 @@ import { useState } from "react";
 import SignInDialog from "../../feature/auth/components/signin-dialog";
 import useAuth from "@/feature/auth/hooks/auth";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import SignOutDialog from "@/feature/auth/components/signout-dialog";
 
 const Header = () => {
 
@@ -25,7 +26,7 @@ const Header = () => {
     return (
         <>
             <header
-                className={cn("h-16", "flex", "items-center", "p-4", "border-b", "justify-between")}
+                className={cn("h-16", "flex", "items-center", "p-4", "border-b", "justify-between", "md:px-10")}
             >
                 <h1
                     className={cn("text-lg", "font-bold", "md:text-xl")}
@@ -63,7 +64,10 @@ const Header = () => {
                     }
                 </menu>
             </header>
+
+            {/** サインアップ、サインアウトのダイアログ */}
             <SignInDialog isOpenDialog={isOpenSignInDialog} setIsOpenDialog={setIsOpenSignInDialog} />
+            <SignOutDialog isOpenDialog={isOpenSignOutDialog} setIsOpenDialog={setIsOpenSignOutDialog} />
         </>
     )
 };
