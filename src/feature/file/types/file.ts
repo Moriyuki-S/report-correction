@@ -6,3 +6,8 @@ export type CorrectedFile = {
     memo: string;
     fileUrl: string;
 };
+
+export type UploadFile = {
+    name: string;
+    file: File;
+};
