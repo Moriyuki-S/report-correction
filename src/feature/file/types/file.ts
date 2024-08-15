@@ -4,10 +4,14 @@ export type CorrectedFile = {
     correctedAt: Date;
     correctComment: string;
     memo: string;
-    fileUrl: string;
+    nameForFilePath: NameForFilePath;
+    fileUrl?: FileUrl;
 };
 
 export type UploadFile = {
     name: string;
     file: File;
 };
+
+export type FileUrl = string;
+export type NameForFilePath = string;

@@ -1,5 +1,5 @@
-import { UploadFile } from "../types/file";
+import { NameForFilePath, UploadFile } from "../types/file";
 
 export interface UploadRepository {
-    uploadFile: (file: UploadFile) => Promise<void>;
+    uploadFile: (file: UploadFile) => Promise<NameForFilePath>;
 };
