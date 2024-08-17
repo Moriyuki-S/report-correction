@@ -1,14 +1,10 @@
 import { AuthUser } from "@/feature/auth/types/user";
-import { SavedCorrectData, UploadFile } from "@/feature/report/types/file";
-import { FirebaseFileUpload } from "../file/upload-file";
+import { CorrectedFile, SavedCorrectData } from "@/feature/report/types/file";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../config";
 import { ISaveCorrectDataRepository } from "@/feature/report/repositories/save-repository";
 
-const saveCorrectDataToDB = async (user: AuthUser, report: UploadFile): Promise<void> => {
-
-    // ファイルをアップロードして、そのファイル名を取得
-    const nameForFilePath = await FirebaseFileUpload.uploadFile(report);
+const saveCorrectDataToDB = async (user: AuthUser, report: CorrectedFile): Promise<void> => {
 
     const saveData: SavedCorrectData = {
         userId: user.id,
@@ -16,10 +12,10 @@ const saveCorrectDataToDB = async (user: AuthUser, report: UploadFile): Promise<
         correctedAt: report.correctedAt,
         correctComment: report.correctComment,
         memo: report.memo,
-        nameForFilePath
+        nameForFilePath: report.nameForFilePath
     };
 
-    await setDoc(doc(db, "(default)", nameForFilePath), saveData);
+    await setDoc(doc(db, "(default)", report.nameForFilePath), saveData);
 };
 
 export const FirebaseStoreSaveCorrectData: ISaveCorrectDataRepository = {
