@@ -1,5 +1,5 @@
-import { UploadRepository } from "@/feature/file/repositories/upload-repository";
-import { NameForFilePath, UploadFile } from "@/feature/file/types/file";
+import { UploadRepository } from "@/feature/report/repositories/upload-repository";
+import { NameForFilePath, UploadFile } from "@/feature/report/types/file";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 
