@@ -1,6 +1,7 @@
 import { FirebaseApp, getApps, initializeApp } from "firebase/app";
 import { Analytics, getAnalytics } from "firebase/analytics";
 import { GoogleAuthProvider } from "firebase/auth";
+import { Firestore, getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -15,11 +16,13 @@ const firebaseConfig = {
 let app: FirebaseApp;
 let analytics: Analytics;
 let googleAuthProvider: GoogleAuthProvider;
+let db: Firestore;
 
 if (typeof window !== "undefined" && !getApps().length) {
     app = initializeApp(firebaseConfig);
     analytics = getAnalytics(app);
     googleAuthProvider = new GoogleAuthProvider();
+    db = getFirestore(app);
 }
 
-export { app, analytics, googleAuthProvider };
+export { app, analytics, googleAuthProvider, db };
