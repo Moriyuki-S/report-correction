@@ -10,6 +10,9 @@ export type CorrectedFile = {
 
 export type UploadFile = {
     name: string;
+    correctedAt: Date;
+    correctComment: string;
+    memo: string;
     file: File;
 };
 
