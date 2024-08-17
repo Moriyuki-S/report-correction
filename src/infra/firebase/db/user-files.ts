@@ -1,10 +1,10 @@
 import { AuthUser } from "@/feature/auth/types/user";
-import { CorrectedFile, SavedCorrectData } from "@/feature/report/types/file";
+import { CorrectedReport, SavedCorrectData } from "@/feature/report/types/file";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../config";
 import { ISaveCorrectDataRepository } from "@/feature/report/repositories/save-repository";
 
-const saveCorrectDataToDB = async (user: AuthUser, report: CorrectedFile): Promise<void> => {
+const saveCorrectDataToDB = async (user: AuthUser, report: CorrectedReport): Promise<void> => {
 
     const saveData: SavedCorrectData = {
         userId: user.id,

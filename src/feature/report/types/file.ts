@@ -1,4 +1,4 @@
-export type CorrectedFile = {
+export type CorrectedReport = {
     name: string;
     correctedAt: Date;
     correctComment: string;
