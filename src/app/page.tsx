@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import ReportUploadButton from "@/feature/report/components/ReportUploadInput";
+import ReportUploadButton from "@/feature/report/components/report-upload-input";
 
 export default function Home() {
   return (
