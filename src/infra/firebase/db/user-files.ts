@@ -11,6 +11,7 @@ const saveCorrectDataToDB = async (user: AuthUser, report: CorrectedReport): Pro
         name: report.name,
         correctedAt: report.correctedAt,
         correctComment: report.correctComment,
+        subject: report.subject,
         memo: report.memo,
         nameForFilePath: report.nameForFilePath
     };
