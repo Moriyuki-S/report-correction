@@ -16,6 +16,9 @@ import {
     TableRow,
 } from "@/components/ui/table"
 
+import { ReportNameUtils } from "../utils/report-name-utils";
+import { cn } from "@/lib/utils";
+
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
@@ -63,7 +66,7 @@ export function DataTable<TData, TValue>({
                                     <TableCell key={cell.id}>
                                         {
                                             cell.column.id === "name" ? (
-                                                <a href={`/reports/${cell.getValue()}`}>
+                                                <a className={cn("hover:underline")} href={`/reports/${ReportNameUtils.formatReportNameForUrl(cell.getValue() as string)}`}>
                                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                                 </a>
                                             ) :
