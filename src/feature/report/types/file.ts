@@ -24,5 +24,10 @@ export type SavedCorrectData = {
     nameForFilePath: NameForFilePath;
 };
 
+export type TableDisplayReport = {
+    name: string;
+    correctedAt: string;
+};
+
 export type FileUrl = string;
 export type NameForFilePath = string;
